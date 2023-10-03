@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Calculator</title>
+  <style>
+    bodybackground {
+      background-image: url('');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+
+    body {
+      background-color: #3E92CC;
+      color: #006494;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+
+    h1 {
+      color: #FFFFFF;
+      text-align: center;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    body {
+      color: #2A628F;
+    }
+
+    form {
+      margin: auto;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    input[type="text"],
+    select {
+      display: block;
+      margin-bottom: 20px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      box-shadow: 0 0 5px #C2E7DA;
+      background-color: #F1FFE7;
+      font-size: 16px;
+      display: block;
+      align-items: center;
+    }
+
+    button {
+      background-color: #16324F;
+      color: #FFFFFF;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      justify-content: center;
+      align-items: center;
+      display: block;
+      margin: auto;
+      font-weight: bold;
+    }
+
+    button:hover {
+      box-shadow: 0 0 5px #0582CA;
+    }
+
+    .la {
+      color: #FFFFFF;
+    }
+
+    .lt {
+      color: #FFFFFF;
+    }
+
+    .homedepot {
+      margin-top: 10px;
+      float: right;
+    }
+
+    .neelogo {
+      margin-top: 1px;
+      float: left;
+    }
+
+    #result {
+      font: arial;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px auto;
+      text-align: center;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="https://image.pitchbook.com/ZYAiguxZxkFVVTIgMfesR8vsimY1624483628178_200x200" alt="NEE Image" width="190"
+    height="155" l>
+  <img
+    src="data:image/png;base64,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"
+    width="100" height="100" alt="Home Depot Image" class="homedepot">
+
+  <h1>Finance Calculator</h1>
+  <form>
+    <label class="lt" for="loan-type"><b>Loan Type:</b></label>
+    <select id="loan-type" name="loan-type">
+      <option value="">Please select a loan type</option>
+      <option value="36">36 Months - EPP</option>
+      <option value="60">Project Loan - 60 Months </option>
+      <option value="15">15 Years Loan Amount less than or equal to 15k</option>
+      <option value="20">20 Years Loan Amount more than 15k</option>
+    </select>
+    <label class="la" for="loan-amount"><b>Loan Amount:</b></label>
+    <input type="text" id="loan-amount" name="loan-amount" placeholder="Enter loan amount">
+    <button type="button" onclick="calculateMonthlyPayment()">Calculate Monthly Payment</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    function calculateMonthlyPayment() {
+      let loanType = document.getElementById("loan-type").value;
+      let loanAmount = parseFloat(document.getElementById("loan-amount").value);
+
+      if (loanType === "15") {
+        let monthlyPayment = loanAmount * 0.01014;
+        document.getElementById("result").innerHTML = "Monthly payment: $" + monthlyPayment.toFixed(2);
+      }
+      else if (loanType === "20") {
+        if (loanAmount >= 15000) {
+          let monthlyPayment = loanAmount * 0.00899;
+          document.getElementById("result").innerHTML = "Monthly payment: $" + monthlyPayment.toFixed(2);
+        }
+        else {
+          document.getElementById("result").innerHTML = "Loan amount must be at least $15,000 for the 20-year loan option";
+        }
+      }
+      else if (loanType === "36") {
+        let monthlyPayment = loanAmount / 36;
+        document.getElementById("result").innerHTML = "Monthly payment: $" + monthlyPayment.toFixed(2);
+      }
+      else if (loanType === "60") {
+        let monthlyPayment = loanAmount * 0.0208;
+        document.getElementById("result").innerHTML = "Monthly payment: $" + monthlyPayment.toFixed(2);
+      }
+    }
+  </script>
+</body>
+
+</html>
